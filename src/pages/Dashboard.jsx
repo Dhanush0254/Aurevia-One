@@ -1,10 +1,11 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import {
   TrendingUp, Wallet, BarChart3, Target, Brain,
   ArrowUpRight, ArrowDownRight, Eye, EyeOff,
   ChevronRight, ToggleLeft, ToggleRight,
-  Shield, Plane, Palmtree, AlertCircle, Lightbulb, Bell
+  Shield, Plane, Palmtree, AlertCircle, Lightbulb, Bell, Zap
 } from 'lucide-react'
 import {
   AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer
@@ -76,6 +77,36 @@ export default function Dashboard() {
             </button>
           </div>
         </div>
+
+        {/* Quick Invest CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="mb-6"
+        >
+          <Link to="/quick-invest" className="block">
+            <div className="relative overflow-hidden quick-invest-gradient rounded-xl p-5 sm:p-6 text-white group cursor-pointer cta-shimmer">
+              <div className="relative z-10 flex items-center justify-between">
+                <div>
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center">
+                      <Zap className="w-4 h-4" />
+                    </div>
+                    <h3 className="text-lg font-bold">Quick Invest</h3>
+                  </div>
+                  <p className="text-emerald-100 text-sm">Invest in under 2 mins</p>
+                </div>
+                <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white/30 transition-colors">
+                  <ArrowUpRight className="w-5 h-5" />
+                </div>
+              </div>
+              {/* Decorative circles */}
+              <div className="absolute top-0 right-0 w-32 h-32 rounded-full bg-white/5 -translate-y-8 translate-x-8" />
+              <div className="absolute bottom-0 left-1/2 w-24 h-24 rounded-full bg-white/5 translate-y-12" />
+            </div>
+          </Link>
+        </motion.div>
 
         {/* Portfolio Cards */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6">
